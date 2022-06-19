@@ -9,28 +9,14 @@ Vue.component('train', {
       intervalId: null,
       fx: [],
       subclipStart: null,
-      subclipEnd: null
+      subclipEnd: null,
+      loader: false
     }
   },
   props: {
     currentProject: null
   },
   methods: {
-    train_info(){
-	    axios.get("/api/training").then(response => {
-            this.packages=response.data;
-	    });
-    },
-    download(modelName) {
-        console.log(modelName);
-	    axios.get("/api/training/"+modelName,{
-            responseType: 'arraybuffer'
-        }).then(response => {
-            var blob=new Blob([response.data])
-            console.log(blob);
-            saveAs(blob,'trt_graph.pb');
-	    });
-    },
     srcChanged(event){
         var file = event.target.files[0]
         document.getElementById('srcTxt').textContent="Source video: "+file.name+" ("+file.size+")";
@@ -77,6 +63,8 @@ Vue.component('train', {
             formData.append('subclipEnd', this.subclipEnd);
         }
 
+	this.loader = true;
+
         axios.post('/api/matte', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -85,7 +73,7 @@ Vue.component('train', {
           }
         ).then(response => {
             var blob=new Blob([response.data])
-            console.log(blob);
+	    this.loader = false;
             saveAs(blob,'output.mp4');
 	    })
         .catch(function(){
@@ -104,8 +92,8 @@ Vue.component('train', {
   <div class="mdl-grid demo-content">
     <div class="demo-card-square mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__title mdl-card--expand">
-            <!--<h2 class="mdl-card__title-text">AI Scissors</h2>-->
-            <!--<img src="/static/logo.png" width="270px" />-->
+	    <img src="/static/logo_aimatte.png" width="50px" />
+            <h2 class="mdl-card__title-text">AI BACKGROUND MATTE</h2>
         </div>
         <!--<div class="mdl-card__supporting-text">
             Upload image file.
@@ -220,6 +208,7 @@ Vue.component('train', {
             <label for="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
               Submit
             </label>
+	    <div id="p2" style="width: 97px;" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" v-show="loader"></div>
            
             
             <br/>
