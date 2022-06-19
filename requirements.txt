@@ -14,3 +14,4 @@ uvicorn[standard]==0.17.6
 ffmpeg==1.4
 moviepy==1.0.3
 gdown==4.4.0
+typing-extensions==4.2.0

@@ -9,7 +9,7 @@ build-docker-dev: ## builds docker dev image.
 
 build-docker: ## builds docker image.
 	cd docker && \
-	docker build -t qooba/aimatting:background -f Dockerfile .
+	docker build --no-cache -t qooba/aimatting:background -f Dockerfile .
 
 
 run-dev: ## run dev mode
