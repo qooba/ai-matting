@@ -3,11 +3,11 @@ MAKE_HELP_LEFT_COLUMN_WIDTH:=14
 help: ## This help.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-$(MAKE_HELP_LEFT_COLUMN_WIDTH)s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
 
-build-docker-dev: ## builds docker image.
+build-docker-dev: ## builds docker dev image.
 	cd docker && \
 	docker build -t qooba/aimatting:background-dev -f Dockerfile.dev .
 
-build-docker-dev: ## builds docker image.
+build-docker: ## builds docker image.
 	cd docker && \
 	docker build -t qooba/aimatting:background -f Dockerfile .
 
