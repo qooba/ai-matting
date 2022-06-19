@@ -1,0 +1,16 @@
+kornia==0.4.1
+tensorboard==2.3.0
+torch==1.7.0
+torchvision==0.8.1
+tqdm==4.51.0
+opencv-python==4.4.0.44
+onnxruntime==1.6.0
+qdi==0.0.2
+fastapi==0.78.0
+jinja2==3.0.0
+aiofiles==0.8.0
+python-multipart==0.0.5
+uvicorn[standard]==0.17.6
+ffmpeg==1.4
+moviepy==1.0.3
+gdown==4.4.0

@@ -5,9 +5,12 @@ help: ## This help.
 
 build-docker-dev: ## builds docker image.
 	cd docker && \
-	cp -r ../src/app app && \
-	docker build -t qooba/aimatting:dev -f Dockerfile.dev . && \
-	rm -rf app
+	docker build -t qooba/aimatting:background-dev -f Dockerfile.dev .
+
+build-docker-dev: ## builds docker image.
+	cd docker && \
+	docker build -t qooba/aimatting:background -f Dockerfile .
+
 
 run-dev: ## run dev mode
 	docker run -it --gpus all -p 8000:8000 --rm --name aimatting -v $(pwd)/src/app:/app qooba/aimatting:dev /bin/bash
