@@ -2,11 +2,11 @@ Background Matting
 
 # References & Thanks
 
-[https://github.com/PeterL1n/RobustVideoMatting](https://github.com/PeterL1n/RobustVideoMatting)
+[https://github.com/PeterL1n/BackgroundMattingV2](https://github.com/PeterL1n/BackgroundMattingV2)
 
-[https://peterl1n.github.io/RobustVideoMatting/#/](https://peterl1n.github.io/RobustVideoMatting/#/)
+[https://grail.cs.washington.edu/projects/background-matting-v2/#/](https://grail.cs.washington.edu/projects/background-matting-v2/#/)
 
-[paper](https://arxiv.org/abs/2108.11515)
+[paper](https://arxiv.org/abs/2012.07810)
 
 
 
